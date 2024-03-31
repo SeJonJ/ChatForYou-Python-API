@@ -26,10 +26,11 @@ def test( test : str):
     print("path val :: ", test)
     return {"test" : test}
 
-@app.post("/game_subject", response_model=GameSubject)
+@app.post("/game_subject")
 def game_subject(data : GameSubject):
     print("model :: ", data)
-    return chatgpt.suggest(data.selected_subject)
+    data = chatgpt.suggest(data)
+    return {"result" : data}
 
 
 if __name__ == "__main__":
