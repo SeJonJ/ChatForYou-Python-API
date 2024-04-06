@@ -4,3 +4,4 @@ requirements.txt
 test.ipynb
 /chatgpt/chatgpt.ipynb
 Dockerfile
+.vscode

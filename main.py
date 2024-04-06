@@ -3,6 +3,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from Model.GameSubject import GameSubject
+from Model.GameTitle import GameTitle
 from chatgpt import chatgpt
 from dotenv import load_dotenv
 import os
@@ -26,11 +27,16 @@ def test( test : str):
     print("path val :: ", test)
     return {"test" : test}
 
+@app.get("/game_title")
+def game_subject(number : int | None = None, response_model=GameTitle):
+    if number is None:
+        number = 5
+    return {"titles" : chatgpt.get_title(number)}
+
 @app.post("/game_subject")
-def game_subject(data : GameSubject):
-    print("model :: ", data)
-    data = chatgpt.suggest(data)
-    return {"result" : data}
+def game_subject(data : GameSubject, response_model=GameSubject):
+    data = chatgpt.get_subject(data)
+    return data
 
 
 if __name__ == "__main__":

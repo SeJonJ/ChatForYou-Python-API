@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from typing import Optional, List
 
 class GameSubject(BaseModel):
-    selected_subject : str
+    title : str
     # suggested_subject : list | None = None
-    suggested_subject: Optional[List[str]] = None
-    before_suject : Optional[List[str]] = None
+    subjects: Optional[List[str]] = None
+    before_subjects : Optional[List[str]] = None
