@@ -12,7 +12,7 @@ load_dotenv()
 app = FastAPI()
 app.add_middleware( ## CORS 에러 해결을 위한 설정
     CORSMiddleware,
-    allow_origins=os.getenv("ORIGINS"),
+    allow_origins=["https://localhost:8443", "https://hjproject.kro.kr:8653"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -27,13 +27,13 @@ def test( test : str):
     print("path val :: ", test)
     return {"test" : test}
 
-@app.get("/game_title")
+@app.get("/game_titles")
 def game_subject(number : int | None = None, response_model=GameTitle):
     if number is None:
         number = 5
     return {"titles" : chatgpt.get_title(number)}
 
-@app.post("/game_subject")
+@app.post("/game_subjects")
 def game_subject(data : GameSubject, response_model=GameSubject):
     data = chatgpt.get_subject(data)
     return data
