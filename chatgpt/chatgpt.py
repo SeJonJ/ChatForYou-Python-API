@@ -10,7 +10,7 @@ import os
 load_dotenv()
 chat = ChatOpenAI(
     temperature=0.1,
-    model="gpt-4-turbo",
+    model="gpt-4o",
     api_key=os.getenv("OPENAI_API_KEY"),
 )
 
@@ -37,7 +37,7 @@ def get_title(number : int):
         example_prompt=example_prompt,
         examples=[],
         suffix="""
-            **상황**: 당신은 퀴즈 게임의 진행자입니다. 참가자는 특정 주제에 대해 물어보며, 당신은 그 주제에 대한 정보를 제공해야 합니다. 그러나, 특정 단어들은 사용이 금지되어 있습니다.
+            **상황**: 당신은 퀴즈 게임의 진행자입니다. 당신은 지정된 리스트에서 5개의 주제를 선택해 제시해야합니다. 그러나, 특정 단어들은 사용이 금지되어 있습니다.
 
             **목표**: {titles} 에서 랜덤한 5가지 단어를 제공하되, 금지된 단어들(응답, 대답, 리스트, 단어)을 제외하고, 참가자의 질문과 관련 없는 내용은 배제해야 합니다. 
 
