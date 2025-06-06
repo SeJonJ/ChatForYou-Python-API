@@ -5,3 +5,4 @@ test.ipynb
 /chatgpt/chatgpt.ipynb
 Dockerfile
 .vscode
+__pycache__
