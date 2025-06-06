@@ -12,10 +12,11 @@ jobs:
     permissions:
       packages: write
       contents: read
+      actions: write 
     env:
       KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
       K8S_NAMESPACE: chatforyou
-      DEPLOYMENT_NAME: chatforyou-v03
+      DEPLOYMENT_NAME: chatforyou-python-api
 
     steps:
       - name: Checkout code
@@ -35,7 +36,7 @@ jobs:
           export TZ=Asia/Seoul
           TIMESTAMP=$(date '+%Y%m%d%H%M%S')
           echo "TIMESTAMP=$TIMESTAMP" >> $GITHUB_ENV
-          echo "IMAGE_URI=ghcr.io/sejonj/chatforyou:$TIMESTAMP" >> $GITHUB_ENV
+          echo "IMAGE_URI=ghcr.io/${{ github.repository_owner }}/chatforyou-python-api:$TIMESTAMP" >> $GITHUB_ENV
 
       # Docker 빌드 및 푸시 (GitHub Packages 사용)
       - name: Build Docker Image
