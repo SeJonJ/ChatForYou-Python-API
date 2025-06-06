@@ -1,6 +1,5 @@
 env
 .env
-requirements.txt
 test.ipynb
 /chatgpt/chatgpt.ipynb
 .vscode
