@@ -3,6 +3,6 @@ env
 requirements.txt
 test.ipynb
 /chatgpt/chatgpt.ipynb
-Dockerfile
 .vscode
 __pycache__
+.DS_Store
