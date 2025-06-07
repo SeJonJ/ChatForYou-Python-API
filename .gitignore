@@ -1,7 +1,19 @@
+# ide환경 관련 파일
 env
+.cursor
+.venv
+
+# 환경 변수 파일
 .env
+
+# 테스트 파일
 test.ipynb
 /chatgpt/chatgpt.ipynb
-.vscode
-__pycache__
+
+# 캐시 파일
+/__pycache__/
+/chatgpt/__pycache__
+/model/__pycache__
+
+# 기타 파일
 .DS_Store

@@ -7,3 +7,5 @@ class GameSubject(BaseModel):
     # suggested_subject : list | None = None
     subjects: Optional[List[str]] = None
     before_subjects : Optional[List[str]] = None
+    difficulty : Optional[str] = "medium"
+    number : Optional[int] = 5
