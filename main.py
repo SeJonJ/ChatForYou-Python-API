@@ -2,9 +2,9 @@ from typing import Union
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from model.GameSubject import GameSubject
-from model.GameTitle import GameTitle
-from gpt_api import chatgpt
+from models.GameTitle import GameTitle
+from models.GameSubject import GameSubject
+from services import chatgpt_service
 from dotenv import load_dotenv
 import os
 
@@ -31,12 +31,12 @@ def test( test : str):
 def game_subject(data : GameTitle | None = None, response_model=GameTitle):
     if data is None:
         data = GameTitle()
-    result = chatgpt.get_title(data.number, data.excluded_titles)
+    result = chatgpt_service.get_title(data.number, data.excluded_titles)
     return {"titles" : result}
 
 @app.post("/game_subjects")
 def game_subject(data : GameSubject, response_model=GameSubject):
-    result = chatgpt.get_subject(data.title, data.number, data.before_subjects, data.difficulty)
+    result = chatgpt_service.get_subject(data.title, data.number, data.before_subjects, data.difficulty)
     return {
         "title" : data.title,
         "subjects" : result,
