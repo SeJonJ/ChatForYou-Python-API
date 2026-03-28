@@ -47,3 +47,8 @@ venv.bak/
 *.swo
 *~
 .cursor
+.claude
+
+# claude
+CLAUDE.local.md
+CLAUDE.md
